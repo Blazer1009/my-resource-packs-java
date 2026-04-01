@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Resource Packs</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>My Resource Packs</h1>
+  <div class="pack-gallery" id="gallery"></div>
+
+  <script>
+    async function loadPacks() {
+      const gallery = document.getElementById('gallery');
+
+      // List of pack folders
+      const packsResponse = await fetch('packs/packs.json'); // master JSON listing all folders
+      const packFolders = await packsResponse.json();
+
+      for (const folder of packFolders) {
+        const dataResponse = await fetch(`packs/${folder}/pack.json`);
+        const pack = await dataResponse.json();
+
+        const div = document.createElement('div');
+        div.className = 'pack';
+        div.innerHTML = `<img src="packs/${folder}/screenshot.png" alt="${pack.name}">
+                         <h2>${pack.name}</h2>`;
+        if (pack.github) div.innerHTML += `<a href="packs/${folder}/${pack.github}" class="github">Download</a>`;
+        if (pack.modrinth) div.innerHTML += `<a href="${pack.modrinth}" class="modrinth" target="_blank">Download on Modrinth</a>`;
+        gallery.appendChild(div);
+      }
+    }
+
+    loadPacks();
+  </script>
+</body>
+</html>
