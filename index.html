@@ -4,8 +4,34 @@
 <meta charset="UTF-8">
 <title>Blazer1009's Java Resource Packs</title>
 <link rel="stylesheet" href="style.css">
+<style>
+  /* GitHub Icon Styles */
+  #github-link {
+    position: fixed;   /* Stays in place while scrolling */
+    top: 10px;         /* Distance from top */
+    right: 10px;       /* Distance from right */
+    width: 30px;       /* Size of the icon */
+    height: 30px;
+    z-index: 1000;     /* On top of other elements */
+  }
+
+  #github-link img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.2s;
+  }
+
+  #github-link:hover img {
+    transform: scale(1.2); /* Slight zoom on hover */
+  }
+</style>
 </head>
 <body>
+  <!-- GitHub icon -->
+  <a href="https://github.com/Blazer1009" target="_blank" id="github-link">
+    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" />
+  </a>
+
   <h1>Blazer1009's Java Resource Packs</h1>
   <div class="pack-gallery" id="gallery"></div>
 
